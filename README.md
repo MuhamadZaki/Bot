@@ -1,1 +1,1 @@
-Author: Kumis Yang Tersakiti!
+Author: Kuli Jawa
