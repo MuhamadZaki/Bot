@@ -427,11 +427,11 @@ def start(nomor, mode):
     except KeyboardInterrupt:
         tanya(nomor)
 
-def main():
+def tobrut():
     os.system("cls") if os.name == "nt" else os.system("clear")
-    autoketik(f"{putih}Contoh Penulisan Nomor: {hijau}08123123123{putih}")
+    autoketik(f"{putih}Contoh Penulisan Nomor: {hijau}08123123123 / 628123123123{putih}")
     nomor = input(f"{putih}Masukkan Nomor Tujuan {putih}: {hijau}")
-    start(nomor, 0) # Mulai Tools!
+    start(nomor, 0)
 
 if __name__ == "__main__":
-    main()
+    tobrut()
