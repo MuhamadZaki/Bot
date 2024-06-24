@@ -334,7 +334,7 @@ def jam(nomor):
                 #time.sleep(60)
                 rto = False
             else:
-                autoketik(f"{merah}Gagal mengirim spam. Status code: {response_tokopedia.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Tokopedia. Status code: {response_tokopedia.status_code}")
 
             if response_misteraladin.status_code == 429:
                 autoketik(f"{putih}Sukses Mengirim OTP Mister Aladin!")
@@ -342,7 +342,7 @@ def jam(nomor):
                 #time.sleep(60)
                 rto = False
             else:
-                autoketik(f"{merah}Gagal mengirim spam ke Mister Aladin. Status code: {response_misteraladin.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Mister Aladin. Status code: {response_misteraladin.status_code}")
 
             if response_kredito.status_code == 200:
                     autoketik(f"{putih}Sukses Mengirim OTP Kredito!")
@@ -350,7 +350,7 @@ def jam(nomor):
                     #time.sleep(60)
                     rto = False
             else:
-                autoketik(f"{merah}Gagal mengirim spam ke Kredito. Status code: {response_kredito.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Kredito. Status code: {response_kredito.status_code}")
             
             if response_maucash.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP dari Maucash!")
@@ -358,7 +358,7 @@ def jam(nomor):
                 #time.sleep(60)
                 rto = False
             else:
-                autoketik(f"{merah}Gagal mengirim OTP dari Maucash. Status code: {response_maucash.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Maucash. Status code: {response_maucash.status_code}")
 
             if response_tokko.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Tokko!")
@@ -374,7 +374,7 @@ def jam(nomor):
                 #time.sleep(60)
                 rto = False
             else:
-                autoketik(f"{merah}Gagal mengirim OTP ke Sayurbox. Status code: {response_sayurbox.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Sayurbox. Status code: {response_sayurbox.status_code}")
 
             if response_carsome.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Carsome!")
@@ -382,7 +382,7 @@ def jam(nomor):
                 #time.sleep(60)
                 rto = False
             else:
-                autoketik(f"{merah}Gagal mengirim OTP ke Carsome. Status code: {response_carsome.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Carsome. Status code: {response_carsome.status_code}")
             
             if response_ruparupa.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Rupa-rupa!")
@@ -390,7 +390,7 @@ def jam(nomor):
                 time.sleep(60)
                 rto = False
             else:
-                autoketik(f"{merah}Gagal mengirim OTP ke Rupa-rupa. Status code: {response_ruparupa.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Rupa-rupa. Status code: {response_ruparupa.status_code}")
             
         except requests.exceptions.ConnectionError:
             autoketik(f"{merah}Gagal membuat koneksi baru!")
