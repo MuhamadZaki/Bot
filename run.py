@@ -1,5 +1,3 @@
-""" Cil-Cil Pake Logika-mu dan Jangan di Posting Ulang Hihi! Krena Kamu Memposting Ulang code sebelumnya! """
-
 import sys        
 import subprocess 
 
