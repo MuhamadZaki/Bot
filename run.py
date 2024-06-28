@@ -75,6 +75,21 @@ def tanya(nomor):
             print("Masukan Pilihan Dengan Benar!")
 
 def jam(nomor):
+    print("""
+\033[92m
+
+▒▒▒▒▒
+▒ T ▒
+▒ O ▒
+▒ B ▒
+▒ R ▒
+▒ U ▒      
+▒ T ▒            
+▒   ▒
+▒▒▒▒▒
+
+\033[0m
+""")
     autoketik("Program Berjalan!")
     b = nomor[1:12] # Contoh nomor = 081319196666
     c = "62" + b    # Contoh nomor = 6281319196666
@@ -334,7 +349,7 @@ def jam(nomor):
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Tokopedia. Status code: {response_tokopedia.status_code}")
 
-            if response_misteraladin.status_code == 429:
+            if response_misteraladin.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Mister Aladin!")
                 countdown(100) 
                 #time.sleep(60)
@@ -413,6 +428,10 @@ def jam(nomor):
         except KeyboardInterrupt:
             tanya(nomor)
 
+    """ if rto:
+     autoketik(f"{merah}Mencoba kembali....")
+     time.sleep(20)  
+     """
     if not rto:
         tanya(nomor)
 
