@@ -1,3 +1,4 @@
+""" KALAU DI SMARTPHONE(TERMUK), LAYAR MODE MIRING (landscape) """
 import sys        
 import subprocess 
 
